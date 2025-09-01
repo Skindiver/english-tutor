@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İngiliz Hoca - A'dan Z'ye İngilizce Öğrenin</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <i class="fas fa-graduation-cap"></i>
+                <span>İngiliz Hoca</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Ana Sayfa</a></li>
+                <li><a href="#levels" class="nav-link">Seviyeler</a></li>
+                <li><a href="#lessons" class="nav-link">Dersler</a></li>
+                <li><a href="#progress" class="nav-link">İlerleme</a></li>
+                <li><a href="#profile" class="nav-link">Profil</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Ana Sayfa -->
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <h1>A'dan Z'ye İngilizce Öğrenin</h1>
+                <p>Profesyonel öğretim metodları ile İngilizce seviyenizi A1'den C2'ye kadar geliştirin</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="startLevelTest()">Seviye Testi Yap</button>
+                    <button class="btn btn-secondary" onclick="showLevels()">Derslere Başla</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="400" height="300" fill="#f8fafc"/>
+                    <circle cx="200" cy="150" r="80" fill="#3b82f6" opacity="0.1"/>
+                    <path d="M160 120h80v60h-80z" fill="#3b82f6" opacity="0.8"/>
+                    <circle cx="200" cy="150" r="30" fill="#ffffff"/>
+                    <path d="M190 140l20 10-20 10z" fill="#3b82f6"/>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Seviyeler -->
+        <section id="levels" class="levels-section hidden">
+            <div class="container">
+                <h2>İngilizce Seviyeleri</h2>
+                <div class="levels-grid">
+                    <div class="level-card" data-level="A1">
+                        <div class="level-header">
+                            <h3>A1 - Başlangıç</h3>
+                            <span class="level-badge">Temel</span>
+                        </div>
+                        <p>Günlük yaşamda kullanılan temel kelimeler ve ifadeler</p>
+                        <ul>
+                            <li>Temel kelime hazinesi (500+ kelime)</li>
+                            <li>Basit gramer yapıları</li>
+                            <li>Kendini tanıtma</li>
+                            <li>Günlük konuşmalar</li>
+                        </ul>
+                        <button class="btn btn-outline" onclick="startLevel('A1')">Başla</button>
+                    </div>
+                    
+                    <div class="level-card" data-level="A2">
+                        <div class="level-header">
+                            <h3>A2 - Temel</h3>
+                            <span class="level-badge">Temel</span>
+                        </div>
+                        <p>Günlük konularda basit cümleler kurabilme</p>
+                        <ul>
+                            <li>Genişletilmiş kelime hazinesi (1000+ kelime)</li>
+                            <li>Geçmiş ve gelecek zaman</li>
+                            <li>Alışveriş, seyahat konuları</li>
+                            <li>Basit metinler okuma</li>
+                        </ul>
+                        <button class="btn btn-outline" onclick="startLevel('A2')">Başla</button>
+                    </div>
+
+                    <div class="level-card" data-level="B1">
+                        <div class="level-header">
+                            <h3>B1 - Orta Alt</h3>
+                            <span class="level-badge">Orta</span>
+                        </div>
+                        <p>Tanıdık konularda ana fikirleri anlayabilme</p>
+                        <ul>
+                            <li>İş ve okul konuları</li>
+                            <li>Karmaşık gramer yapıları</li>
+                            <li>Görüş bildirme</li>
+                            <li>Kısa hikayeler yazma</li>
+                        </ul>
+                        <button class="btn btn-outline" onclick="startLevel('B1')">Başla</button>
+                    </div>
+
+                    <div class="level-card" data-level="B2">
+                        <div class="level-header">
+                            <h3>B2 - Orta Üst</h3>
+                            <span class="level-badge">Orta</span>
+                        </div>
+                        <p>Karmaşık metinlerin ana fikirlerini anlayabilme</p>
+                        <ul>
+                            <li>Soyut konular</li>
+                            <li>Akıcı konuşma</li>
+                            <li>Detaylı metinler</li>
+                            <li>Tartışmalara katılma</li>
+                        </ul>
+                        <button class="btn btn-outline" onclick="startLevel('B2')">Başla</button>
+                    </div>
+
+                    <div class="level-card" data-level="C1">
+                        <div class="level-header">
+                            <h3>C1 - İleri</h3>
+                            <span class="level-badge">İleri</span>
+                        </div>
+                        <p>Geniş bir yelpazede zorlu metinleri anlayabilme</p>
+                        <ul>
+                            <li>Akademik dil</li>
+                            <li>İş dünyası İngilizcesi</li>
+                            <li>Edebi metinler</li>
+                            <li>Sunum yapma</li>
+                        </ul>
+                        <button class="btn btn-outline" onclick="startLevel('C1')">Başla</button>
+                    </div>
+
+                    <div class="level-card" data-level="C2">
+                        <div class="level-header">
+                            <h3>C2 - Uzman</h3>
+                            <span class="level-badge">Uzman</span>
+                        </div>
+                        <p>Neredeyse her şeyi kolayca anlayabilme ve ifade edebilme</p>
+                        <ul>
+                            <li>Ana dil seviyesi</li>
+                            <li>Nüanslı ifadeler</li>
+                            <li>Profesyonel yazışma</li>
+                            <li>Çeviri yapabilme</li>
+                        </ul>
+                        <button class="btn btn-outline" onclick="startLevel('C2')">Başla</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dersler -->
+        <section id="lessons" class="lessons-section hidden">
+            <div class="container">
+                <h2>Ders Modülleri</h2>
+                <div class="lessons-grid">
+                    <div class="lesson-module" onclick="openModule('vocabulary')">
+                        <div class="module-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3>Kelime Hazinesi</h3>
+                        <p>Günlük yaşamdan iş dünyasına kadar geniş kelime dağarcığı</p>
+                        <div class="module-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span>0/100 kelime</span>
+                        </div>
+                    </div>
+
+                    <div class="lesson-module" onclick="openModule('grammar')">
+                        <div class="module-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3>Gramer</h3>
+                        <p>Temel gramerden ileri seviye yapılara kadar</p>
+                        <div class="module-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span>0/50 konu</span>
+                        </div>
+                    </div>
+
+                    <div class="lesson-module" onclick="openModule('listening')">
+                        <div class="module-icon">
+                            <i class="fas fa-headphones"></i>
+                        </div>
+                        <h3>Dinleme</h3>
+                        <p>Farklı aksanlar ve konuşma hızları ile dinleme pratiği</p>
+                        <div class="module-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span>0/30 egzersiz</span>
+                        </div>
+                    </div>
+
+                    <div class="lesson-module" onclick="openModule('speaking')">
+                        <div class="module-icon">
+                            <i class="fas fa-microphone"></i>
+                        </div>
+                        <h3>Konuşma</h3>
+                        <p>Telaffuz ve akıcılık geliştirme egzersizleri</p>
+                        <div class="module-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span>0/25 egzersiz</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- İlerleme -->
+        <section id="progress" class="progress-section hidden">
+            <div class="container">
+                <h2>İlerleme Durumu</h2>
+                <div class="progress-dashboard">
+                    <div class="progress-card">
+                        <h3>Genel İlerleme</h3>
+                        <div class="circular-progress">
+                            <svg class="progress-ring" width="120" height="120">
+                                <circle class="progress-ring-circle" stroke="#e5e7eb" stroke-width="8" fill="transparent" r="52" cx="60" cy="60"/>
+                                <circle class="progress-ring-circle progress-ring-fill" stroke="#3b82f6" stroke-width="8" fill="transparent" r="52" cx="60" cy="60" style="stroke-dasharray: 326.73; stroke-dashoffset: 326.73;"/>
+                            </svg>
+                            <div class="progress-text">0%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h4>Öğrenilen Kelimeler</h4>
+                                <span class="stat-number">0</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h4>Toplam Süre</h4>
+                                <span class="stat-number">0 saat</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h4>Tamamlanan Dersler</h4>
+                                <span class="stat-number">0</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h4>Mevcut Seviye</h4>
+                                <span class="stat-number">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modaller -->
+    <div id="levelTestModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Seviye Belirleme Testi</h3>
+                <button class="close-btn" onclick="closeModal('levelTestModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="testContent">
+                    <p>Bu test İngilizce seviyenizi belirlemek için tasarlanmıştır. Toplam 20 soru bulunmaktadır.</p>
+                    <button class="btn btn-primary" onclick="startTest()">Teste Başla</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="vocabularyModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Kelime Öğrenme</h3>
+                <button class="close-btn" onclick="closeModal('vocabularyModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="vocabularyContent">
+                    <!-- Kelime içeriği buraya yüklenecek -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

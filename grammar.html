@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gramer Dersleri - İngiliz Hoca</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .grammar-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .grammar-topic {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .topic-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .topic-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+        
+        .topic-title {
+            font-size: 1.8rem;
+            color: #1f2937;
+            margin: 0;
+        }
+        
+        .topic-level {
+            background: #3b82f6;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-left: auto;
+        }
+        
+        .topic-content {
+            margin-bottom: 2rem;
+        }
+        
+        .explanation {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid #3b82f6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .examples {
+            margin-bottom: 1.5rem;
+        }
+        
+        .example-item {
+            background: #f0f9ff;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            border-left: 3px solid #10b981;
+        }
+        
+        .example-correct {
+            color: #059669;
+            font-weight: 500;
+        }
+        
+        .example-incorrect {
+            color: #dc2626;
+            text-decoration: line-through;
+        }
+        
+        .exercise-section {
+            background: #fef7ff;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 2px solid #e879f9;
+        }
+        
+        .exercise-question {
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .exercise-options {
+            display: grid;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .exercise-option {
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .exercise-option:hover {
+            border-color: #3b82f6;
+            background: #f0f9ff;
+        }
+        
+        .exercise-option.selected {
+            border-color: #3b82f6;
+            background: #dbeafe;
+        }
+        
+        .exercise-option.correct {
+            border-color: #10b981;
+            background: #d1fae5;
+        }
+        
+        .exercise-option.incorrect {
+            border-color: #ef4444;
+            background: #fee2e2;
+        }
+        
+        .exercise-feedback {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+        
+        .feedback-correct {
+            background: #d1fae5;
+            border: 1px solid #10b981;
+            color: #065f46;
+        }
+        
+        .feedback-incorrect {
+            background: #fee2e2;
+            border: 1px solid #ef4444;
+            color: #991b1b;
+        }
+        
+        .progress-indicator {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            position: sticky;
+            top: 100px;
+            z-index: 100;
+        }
+        
+        .progress-text {
+            font-weight: 500;
+            color: #1f2937;
+        }
+        
+        .progress-bar-container {
+            flex: 1;
+            margin: 0 2rem;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+        
+        .back-button {
+            position: fixed;
+            top: 100px;
+            left: 20px;
+            background: white;
+            border: 2px solid #3b82f6;
+            color: #3b82f6;
+            padding: 0.75rem 1rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .back-button:hover {
+            background: #3b82f6;
+            color: white;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <i class="fas fa-graduation-cap"></i>
+                <span>İngiliz Hoca</span>
+            </div>
+            <div class="nav-title">
+                <h2 style="margin: 0; color: #1f2937;">Gramer Dersleri</h2>
+            </div>
+        </nav>
+    </header>
+
+    <a href="index.html" class="back-button">
+        <i class="fas fa-arrow-left"></i> Ana Sayfa
+    </a>
+
+    <main style="margin-top: 120px;">
+        <div class="grammar-container">
+            <div class="progress-indicator">
+                <span class="progress-text">İlerleme Durumu</span>
+                <div class="progress-bar-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="grammarProgress"></div>
+                    </div>
+                </div>
+                <span id="progressText">0/12 Konu</span>
+            </div>
+
+            <!-- Present Simple -->
+            <div class="grammar-topic" data-topic="present-simple">
+                <div class="topic-header">
+                    <div class="topic-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="topic-title">Present Simple (Geniş Zaman)</h3>
+                    <span class="topic-level">A1</span>
+                </div>
+                
+                <div class="topic-content">
+                    <div class="explanation">
+                        <h4>Kullanım Alanları:</h4>
+                        <ul>
+                            <li>Genel gerçekler ve alışkanlıklar</li>
+                            <li>Düzenli olarak yapılan eylemler</li>
+                            <li>Sabit durumlar</li>
+                        </ul>
+                        <h4>Yapısı:</h4>
+                        <p><strong>Olumlu:</strong> Subject + Verb (+ s/es for 3rd person)</p>
+                        <p><strong>Olumsuz:</strong> Subject + don't/doesn't + Verb</p>
+                        <p><strong>Soru:</strong> Do/Does + Subject + Verb?</p>
+                    </div>
+                    
+                    <div class="examples">
+                        <h4>Örnekler:</h4>
+                        <div class="example-item">
+                            <span class="example-correct">✓ I work every day.</span> (Her gün çalışırım.)
+                        </div>
+                        <div class="example-item">
+                            <span class="example-correct">✓ She speaks English fluently.</span> (O akıcı İngilizce konuşur.)
+                        </div>
+                        <div class="example-item">
+                            <span class="example-incorrect">✗ I am work every day.</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="exercise-section">
+                    <h4>Egzersiz 1:</h4>
+                    <div class="exercise-question">
+                        Doğru seçeneği işaretleyin: "She _____ to school every morning."
+                    </div>
+                    <div class="exercise-options">
+                        <div class="exercise-option" onclick="selectAnswer(this, false)">go</div>
+                        <div class="exercise-option" onclick="selectAnswer(this, true)">goes</div>
+                        <div class="exercise-option" onclick="selectAnswer(this, false)">going</div>
+                        <div class="exercise-option" onclick="selectAnswer(this, false)">is go</div>
+                    </div>
+                    <div class="exercise-feedback">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Present Continuous -->
+            <div class="grammar-topic" data-topic="present-continuous">
+                <div class="topic-header">
+                    <div class="topic-icon">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <h3 class="topic-title">Present Continuous (Şimdiki Zaman)</h3>
+                    <span class="topic-level">A1</span>
+                </div>
+                
+                <div class="topic-content">
+                    <div class="explanation">
+                        <h4>Kullanım Alanları:</h4>
+                        <ul>
+                            <li>Şu anda devam eden eylemler</li>
+                            <li>Geçici durumlar</li>
+                            <li>Gelecek planları</li>
+                        </ul>
+                        <h4>Yapısı:</h4>
+                        <p><strong>Olumlu:</strong> Subject + am/is/are + Verb-ing</p>
+                        <p><strong>Olumsuz:</strong> Subject + am/is/are + not + Verb-ing</p>
+                        <p><strong>Soru:</strong> Am/Is/Are + Subject + Verb-ing?</p>
+                    </div>
+                    
+                    <div class="examples">
+                        <h4>Örnekler:</h4>
+                        <div class="example-item">
+                            <span class="example-correct">✓ I am reading a book now.</span> (Şu anda kitap okuyorum.)
+                        </div>
+                        <div class="example-item">
+                            <span class="example-correct">✓ They are coming tomorrow.</span> (Yarın geliyorlar.)
+                        </div>
+                        <div class="example-item">
+                            <span class="example-incorrect">✗ I am read a book now.</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="exercise-section">
+                    <h4>Egzersiz 2:</h4>
+                    <div class="exercise-question">
+                        Doğru seçeneği işaretleyin: "Look! It _____."
+                    </div>
+                    <div class="exercise-options">
+                        <div class="exercise-option" onclick="selectAnswer(this, false)">rain</div>
+                        <div class="exercise-option" onclick="selectAnswer(this, false)">rains</div>
+                        <div class="exercise-option" onclick="selectAnswer(this, true)">is raining</div>
+                        <div class="exercise-option" onclick="selectAnswer(this, false)">was raining</div>
+                    </div>
+                    <div class="exercise-feedback">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Past Simple -->
+            <div class="grammar-topic" data-topic="past-simple">
+                <div class="topic-header">
+                    <div class="topic-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <h3 class="topic-title">Past Simple (Geçmiş Zaman)</h3>
+                    <span class="topic-level">A2</span>
+                </div>
+                
+                <div class="topic-content">
+                    <div class="explanation">
+                        <h4>Kullanım Alanları:</h4>
+                        <ul>
+                            <li>Geçmişte tamamlanmış eylemler</li>
+                            <li>Geçmişteki alışkanlıklar</li>
+                            <li>Geçmişteki durumlar</li>
+                        </ul>
+                        <h4>Yapısı:</h4>
+                        <p><strong>Düzenli fiiller:</strong> Verb + ed</p>
+                        <p><strong>Düzensiz fiiller:</strong> 2. form (go → went, see → saw)</p>
+                        <p><strong>Olumsuz:</strong> Subject + didn't + Verb</p>
+                        <p><strong>Soru:</strong> Did + Subject + Verb?</p>
+                    </div>
+                    
+                    <div class="examples">
+                        <h4>Örnekler:</h4>
+                        <div class="example-item">
+                            <span class="example-correct">✓ I visited Paris last year.</span> (Geçen yıl Paris'i ziyaret ettim.)
+                        </div>
+                        <div class="example-item">
+                            <span class="example-correct">✓ She didn't come to the party.</span> (Partiye gelmedi.)
+                        </div>
+                        <div class="example-item">
+                            <span class="example-incorrect">✗ I didn't came yesterday.</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="exercise-section">
+                    <h4>Egzersiz 3:</h4>
+                    <div class="exercise-question">
+                        Doğru seçeneği işaretleyin: "Yesterday, I _____ to the cinema."
+                    </div>
+                    <div class="exercise-options">
+                        <div class="exercise-option" onclick="selectAnswer(this, false)">go</div>
+                        <div class="exercise-option" onclick="selectAnswer(this, true)">went</div>
+                        <div class="exercise-option" onclick="selectAnswer(this, false)">going</div>
+                        <div class="exercise-option" onclick="selectAnswer(this, false)">was go</div>
+                    </div>
+                    <div class="exercise-feedback">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Future Simple -->
+            <div class="grammar-topic" data-topic="future-simple">
+                <div class="topic-header">
+                    <div class="topic-icon">
+                        <i class="fas fa-forward"></i>
+                    </div>
+                    <h3 class="topic-title">Future Simple (Gelecek Zaman)</h3>
+                    <span class="topic-level">A2</span>
+                </div>
+                
+                <div class="topic-content">
+                    <div class="explanation">
+                        <h4>Kullanım Alanları:</h4>
+                        <ul>
+                            <li>Gelecekteki planlar ve tahminler</li>
+                            <li>Spontan kararlar</li>
+                            <li>Vaatler ve teklifler</li>
+                        </ul>
+                        <h4>Yapısı:</h4>
+                        <p><strong>Will:</strong> Subject + will + Verb</p>
+                        <p><strong>Going to:</strong> Subject + am/is/are + going to + Verb</p>
+                        <p><strong>Olumsuz:</strong> Subject + won't + Verb</p>
+                        <p><strong>Soru:</strong> Will + Subject + Verb?</p>
+                    </div>
+                    
+                    <div class="examples">
+                        <h4>Örnekler:</h4>
+                        <div class="example-item">
+                            <span class="example-correct">✓ I will help you tomorrow.</span> (Yarın sana yardım edeceğim.)
+                        </div>
+                        <div class="example-item">
+                            <span class="example-correct">✓ She is going to study medicine.</span> (Tıp okuyacak.)
+                        </div>
+                        <div class="example-item">
+                            <span class="example-incorrect">✗ I will to help you.</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="exercise-section">
+                    <h4>Egzersiz 4:</h4>
+                    <div class="exercise-question">
+                        Doğru seçeneği işaretleyin: "Don't worry, I _____ you with your homework."
+                    </div>
+                    <div class="exercise-options">
+                        <div class="exercise-option" onclick="selectAnswer(this, false)">help</div>
+                        <div class="exercise-option" onclick="selectAnswer(this, true)">will help</div>
+                        <div class="exercise-option" onclick="selectAnswer(this, false)">am helping</div>
+                        <div class="exercise-option" onclick="selectAnswer(this, false)">helped</div>
+                    </div>
+                    <div class="exercise-feedback">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Verbs -->
+            <div class="grammar-topic" data-topic="modal-verbs">
+                <div class="topic-header">
+                    <div class="topic-icon">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <h3 class="topic-title">Modal Verbs (Yardımcı Fiiller)</h3>
+                    <span class="topic-level">B1</span>
+                </div>
+                
+                <div class="topic-content">
+                    <div class="explanation">
+                        <h4>Temel Modal Verbs:</h4>
+                        <ul>
+                            <li><strong>Can/Could:</strong> Yetenek, izin, rica</li>
+                            <li><strong>May/Might:</strong> İhtimal, izin</li>
+                            <li><strong>Must/Have to:</strong> Zorunluluk</li>
+                            <li><strong>Should/Ought to:</strong> Tavsiye</li>
+                            <li><strong>Would:</strong> Kibarlık, geçmiş alışkanlık</li>
+                        </ul>
+                        <h4>Yapısı:</h4>
+                        <p><strong>Olumlu:</strong> Subject + Modal + Verb</p>
+                        <p><strong>Olumsuz:</strong> Subject + Modal + not + Verb</p>
+                        <p><strong>Soru:</strong> Modal + Subject + Verb?</p>
+                    </div>
+                    
+                    <div class="examples">
+                        <h4>Örnekler:</h4>
+                        <div class="example-item">
+                            <span class="example-correct">✓ You should study harder.</span> (Daha çok çalışmalısın.)
+                        </div>
+                        <div class="example-item">
+                            <span class="example-correct">✓ Can you help me?</span> (Bana yardım edebilir misin?)
+                        </div>
+                        <div class="example-item">
+                            <span class="example-incorrect">✗ You should to study harder.</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="exercise-section">
+                    <h4>Egzersiz 5:</h4>
+                    <div class="exercise-question">
+                        Doğru seçeneği işaretleyin: "You _____ eat so much junk food. It's not healthy."
+                    </div>
+                    <div class="exercise-options">
+                        <div class="exercise-option" onclick="selectAnswer(this, false)">must</div>
+                        <div class="exercise-option" onclick="selectAnswer(this, true)">shouldn't</div>
+                        <div class="exercise-option" onclick="selectAnswer(this, false)">can</div>
+                        <div class="exercise-option" onclick="selectAnswer(this, false)">would</div>
+                    </div>
+                    <div class="exercise-feedback">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conditional Sentences -->
+            <div class="grammar-topic" data-topic="conditionals">
+                <div class="topic-header">
+                    <div class="topic-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h3 class="topic-title">Conditional Sentences (Koşul Cümleleri)</h3>
+                    <span class="topic-level">B2</span>
+                </div>
+                
+                <div class="topic-content">
+                    <div class="explanation">
+                        <h4>Koşul Türleri:</h4>
+                        <ul>
+                            <li><strong>Zero Conditional:</strong> If + Present, Present (Genel gerçekler)</li>
+                            <li><strong>First Conditional:</strong> If + Present, Will + Verb (Gerçek durumlar)</li>
+                            <li><strong>Second Conditional:</strong> If + Past, Would + Verb (Hayali durumlar)</li>
+                            <li><strong>Third Conditional:</strong> If + Past Perfect, Would have + Past Participle</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="examples">
+                        <h4>Örnekler:</h4>
+                        <div class="example-item">
+                            <span class="example-correct">✓ If it rains, I stay home.</span> (Zero Conditional)
+                        </div>
+                        <div class="example-item">
+                            <span class="example-correct">✓ If I have time, I will call you.</span> (First Conditional)
+                        </div>
+                        <div class="example-item">
+                            <span class="example-correct">✓ If I were rich, I would travel the world.</span> (Second Conditional)
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="exercise-section">
+                    <h4>Egzersiz 6:</h4>
+                    <div class="exercise-question">
+                        Doğru seçeneği işaretleyin: "If I _____ you, I would apologize."
+                    </div>
+                    <div class="exercise-options">
+                        <div class="exercise-option" onclick="selectAnswer(this, false)">am</div>
+                        <div class="exercise-option" onclick="selectAnswer(this, true)">were</div>
+                        <div class="exercise-option" onclick="selectAnswer(this, false)">will be</div>
+                        <div class="exercise-option" onclick="selectAnswer(this, false)">would be</div>
+                    </div>
+                    <div class="exercise-feedback">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let completedTopics = 0;
+        const totalTopics = 12;
+        
+        function selectAnswer(element, isCorrect) {
+            // Önceki seçimleri temizle
+            const options = element.parentElement.querySelectorAll('.exercise-option');
+            options.forEach(option => {
+                option.classList.remove('selected', 'correct', 'incorrect');
+            });
+            
+            // Seçimi işaretle
+            element.classList.add('selected');
+            
+            // Doğru/yanlış göster
+            setTimeout(() => {
+                options.forEach(option => {
+                    const isThisCorrect = option.onclick.toString().includes('true');
+                    if (isThisCorrect) {
+                        option.classList.add('correct');
+                    } else if (option.classList.contains('selected') && !isCorrect) {
+                        option.classList.add('incorrect');
+                    }
+                });
+                
+                // Feedback göster
+                const feedback = element.parentElement.nextElementSibling;
+                const feedbackText = feedback.querySelector('p');
+                
+                if (isCorrect) {
+                    feedback.className = 'exercise-feedback feedback-correct';
+                    feedbackText.textContent = '🎉 Doğru! Tebrikler!';
+                    
+                    // İlerlemeyi güncelle
+                    const topic = element.closest('.grammar-topic');
+                    if (!topic.classList.contains('completed')) {
+                        topic.classList.add('completed');
+                        completedTopics++;
+                        updateProgress();
+                    }
+                } else {
+                    feedback.className = 'exercise-feedback feedback-incorrect';
+                    feedbackText.textContent = '❌ Yanlış. Tekrar deneyin!';
+                }
+                
+                feedback.style.display = 'block';
+                
+                // Seçenekleri devre dışı bırak
+                options.forEach(option => {
+                    option.style.pointerEvents = 'none';
+                });
+            }, 500);
+        }
+        
+        function updateProgress() {
+            const percentage = (completedTopics / totalTopics) * 100;
+            document.getElementById('grammarProgress').style.width = percentage + '%';
+            document.getElementById('progressText').textContent = `${completedTopics}/${totalTopics} Konu`;
+            
+            // Local storage'a kaydet
+            localStorage.setItem('grammarProgress', JSON.stringify({
+                completed: completedTopics,
+                total: totalTopics
+            }));
+        }
+        
+        // Sayfa yüklendiğinde ilerlemeyi yükle
+        window.addEventListener('load', function() {
+            const saved = localStorage.getItem('grammarProgress');
+            if (saved) {
+                const progress = JSON.parse(saved);
+                completedTopics = progress.completed || 0;
+                updateProgress();
+            }
+        });
+        
+        // Smooth scroll için
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
