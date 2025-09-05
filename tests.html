@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test ve Sınavlar - İngiliz Hoca</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .test-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .test-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .test-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .test-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .test-level {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+        
+        .test-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .info-item {
+            text-align: center;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .info-label {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .info-value {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .start-test-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .start-test-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>🎓 İngiliz Hoca</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="vocabulary.html">Kelimeler</a></li>
+                <li><a href="grammar.html">Gramer</a></li>
+                <li><a href="listening.html">Dinleme</a></li>
+                <li><a href="speaking.html">Konuşma</a></li>
+                <li><a href="tests.html" class="active">Testler</a></li>
+                <li><a href="profile.html">Profil</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="test-container">
+        <h1>📝 Test ve Sınavlar</h1>
+        <p>Seviyenizi test edin ve ilerlemenizi ölçün!</p>
+
+        <div class="test-card">
+            <div class="test-header">
+                <div class="test-title">Başlangıç Seviye Testi</div>
+                <div class="test-level">A1</div>
+            </div>
+            <div class="test-info">
+                <div class="info-item">
+                    <div class="info-label">Soru Sayısı</div>
+                    <div class="info-value">20</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Süre</div>
+                    <div class="info-value">15 dk</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Geçme Notu</div>
+                    <div class="info-value">70%</div>
+                </div>
+            </div>
+            <button class="start-test-btn" onclick="startTest('A1')">Teste Başla</button>
+        </div>
+
+        <div class="test-card">
+            <div class="test-header">
+                <div class="test-title">Temel Seviye Testi</div>
+                <div class="test-level">A2</div>
+            </div>
+            <div class="test-info">
+                <div class="info-item">
+                    <div class="info-label">Soru Sayısı</div>
+                    <div class="info-value">25</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Süre</div>
+                    <div class="info-value">20 dk</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Geçme Notu</div>
+                    <div class="info-value">75%</div>
+                </div>
+            </div>
+            <button class="start-test-btn" onclick="startTest('A2')">Teste Başla</button>
+        </div>
+    </div>
+
+    <script>
+        function startTest(level) {
+            alert(`${level} seviye testi başlatılıyor...`);
+        }
+    </script>
+</body>
+</html>
